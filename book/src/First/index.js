@@ -1,9 +1,87 @@
+import styled from "styled-components";
+
 const First = () => {
   return (
     <div>
-      <h1>Welcome back!</h1>
+      <Font>
+        도서 대출/반납 서비스, Pisces에 오신 것을 환영합니다!
+        <p />
+        이용하실 서비스를 선택해주세요.
+      </Font>
+      <AddButton>
+        <ButtonFont>도서 등록하기</ButtonFont>
+      </AddButton>
+      <BorrowButton>
+        <ButtonFont>도서 대출하기</ButtonFont>
+      </BorrowButton>
+      <ReturnButton>
+        <ButtonFont>도서 대출하기</ButtonFont>
+      </ReturnButton>
     </div>
   );
 };
+
+const ButtonFont = styled.div`
+  color: var(--gray-scale-gray-scale-700, #fff);
+  text-align: center;
+  font-family: SUITE;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  padding: 3px;
+`;
+
+const AddButton = styled.button`
+  display: flex;
+  width: 265px;
+  padding: 12px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border-color: none;
+  background: #5cb0ff;
+  margin-left: 190px;
+  margin-top: 50px;
+  border: none;
+`;
+const BorrowButton = styled.button`
+  display: flex;
+  width: 265px;
+  padding: 12px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border-color: none;
+  background: #5cb0ff;
+  margin-left: 190px;
+  margin-top: 24px;
+  border: none;
+`;
+const ReturnButton = styled.button`
+  display: flex;
+  width: 265px;
+  padding: 12px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border-color: none;
+  background: #5cb0ff;
+  margin-left: 190px;
+  margin-top: 24px;
+  border: none;
+`;
+const Font = styled.div`
+  color: #000;
+  font-family: SUIT;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-left: 190px;
+  margin-top: 50px;
+`;
 
 export default First;
