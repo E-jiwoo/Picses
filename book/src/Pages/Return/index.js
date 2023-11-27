@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Return = () => {
   const navigate = useNavigate();
 
-  const navigateToReturnCheck = () => {
+  const navigateToCheck = () => {
     navigate("/returncheck");
   };
 
@@ -14,7 +14,7 @@ const Return = () => {
       <Font>
         도서 반납 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
       </Font>
-      <Button onClick={navigateToReturnCheck}>
+      <Button onClick={navigateToCheck}>
         <ButtonFont>다음</ButtonFont>
       </Button>
     </div>

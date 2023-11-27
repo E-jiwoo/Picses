@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
 
-  const navigateToRegisterCheck = () => {
+  const navigateToCheck = () => {
     navigate("/registercheck");
   };
   return (
@@ -12,7 +12,7 @@ const Register = () => {
       <Font>
         도서 등록 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
       </Font>
-      <Button onClick={navigateToRegisterCheck}>
+      <Button onClick={navigateToCheck}>
         <ButtonFont>다음</ButtonFont>
       </Button>
     </div>
