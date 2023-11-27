@@ -1,13 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Return = () => {
+  const navigate = useNavigate();
+
+  const navigateToReturnCheck = () => {
+    navigate("/returncheck");
+  };
+
   return (
     <div>
       <Font>
         도서 반납 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
       </Font>
-      <Button>
+      <Button onClick={navigateToReturnCheck}>
         <ButtonFont>다음</ButtonFont>
       </Button>
     </div>

@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const Register = () => {
+const BorrowCheck = () => {
   return (
     <div>
       <Font>
-        도서 등록 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
+        ‘콩쥐팥쥐’
+        <p />: 다음의 도서가 대출을 원하는 책이 맞나요?
       </Font>
     </div>
   );
@@ -22,4 +23,4 @@ const Font = styled.div`
   margin-top: 50px;
 `;
 
-export default Register;
+export default BorrowCheck;
