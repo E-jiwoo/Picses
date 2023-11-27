@@ -1,24 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
-const BorrowCheck = () => {
-  const navigate = useNavigate();
-  const navigateToSuccess = () => {
-    navigate("/borrowsuccess");
-  };
+const BorrowSuccess = () => {
   return (
     <div>
       <Font>
         ‘콩쥐팥쥐’
-        <p />: 다음의 도서가 대출을 원하는 책이 맞나요?
+        <p />: 정상적으로 대출이 완료되었어요!
       </Font>
-      <OKButton onClick={navigateToSuccess}>
-        <WhiteFont>예</WhiteFont>
-      </OKButton>
-      <NoButton>
-        <BlackFont>아니오</BlackFont>
-      </NoButton>
+      <HomeButton>
+        <WhiteFont>홈으로 돌아가기</WhiteFont>
+      </HomeButton>
+      <MoreButton>
+        <BlackFont>한 권 더 대출하기</BlackFont>
+      </MoreButton>
     </div>
   );
 };
@@ -41,21 +36,21 @@ const BlackFont = styled.div`
   font-weight: 600;
   padding: 3px;
 `;
-const OKButton = styled.button`
+const HomeButton = styled.button`
   display: flex;
   position: relative;
   left: 190px;
   top: 50px;
   width: 75px;
-  padding: 8px 0px;
+  padding: 0px 0px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border-radius: 8px;
+  border-radius: 12px;
   background: #5cb0ff;
   border: none;
 `;
-const NoButton = styled.button`
+const MoreButton = styled.button`
   display: flex;
   position: relative;
   left: 300px;
@@ -65,9 +60,9 @@ const NoButton = styled.button`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border-radius: 8px;
-  background: #fff;
-  border: 2px solid #5cb0ff;
+  border-radius: 12px;
+  border: 1px solid var(--primary-primary-100, #ffe7ee);
+  background: var(--gray-scale-gray-scale-700, #fff);
 `;
 const Font = styled.div`
   color: #000;
@@ -80,4 +75,4 @@ const Font = styled.div`
   margin-top: 50px;
 `;
 
-export default BorrowCheck;
+export default BorrowSuccess;

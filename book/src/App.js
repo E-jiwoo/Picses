@@ -7,10 +7,13 @@ import Return from "./Pages/Page/Return/index";
 import RegisterCheck from "./Pages/Check/RegisterCheck/index";
 import BorrowCheck from "./Pages/Check/BorrowCheck/index";
 import ReturnCheck from "./Pages/Check/ReturnCheck/index";
+import BorrowSuccess from "./Pages/Success/BorrowSuccess/index";
+import { createGlobalStyle } from "styled-components";
 
 function App() {
   return (
     <div>
+      <GlobalStyle />
       <Header />
       <BrowserRouter>
         <Routes>
@@ -21,10 +24,18 @@ function App() {
           <Route path="/registercheck" element={<RegisterCheck />}></Route>
           <Route path="/borrowcheck" element={<BorrowCheck />}></Route>
           <Route path="/returncheck" element={<ReturnCheck />}></Route>
+          <Route path="/borrowsuccess" element={<BorrowSuccess />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
+
+const GlobalStyle = createGlobalStyle`
+*{
+    margin: 0;
+    padding: 0;
+}
+`;
 
 export default App;

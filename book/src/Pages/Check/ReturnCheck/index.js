@@ -71,7 +71,7 @@ const Font = styled.div`
   font-size: 28px;
   font-style: normal;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 50px;
   margin-left: 190px;
   margin-top: 50px;
 `;
