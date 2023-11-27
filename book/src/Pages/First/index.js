@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const First = () => {
+  const navigate = useNavigate();
+  const navigateToRegister = () => {
+    navigate("/register");
+  };
   return (
     <div>
       <Font>
@@ -8,7 +13,7 @@ const First = () => {
         <p />
         이용하실 서비스를 선택해주세요.
       </Font>
-      <AddButton>
+      <AddButton onClick={navigateToRegister}>
         <ButtonFont>도서 등록하기</ButtonFont>
       </AddButton>
       <BorrowButton>
@@ -22,7 +27,7 @@ const First = () => {
 };
 
 const ButtonFont = styled.div`
-  color: var(--gray-scale-gray-scale-700, #fff);
+  color: var(--gray-scale-gㅣray-scale-700, #fff);
   text-align: center;
   font-family: SUITE;
   font-size: 17px;
