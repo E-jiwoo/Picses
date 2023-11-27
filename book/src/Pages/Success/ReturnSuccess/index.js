@@ -1,17 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const ReturnSuccess = () => {
+  const navigate = useNavigate();
+  const navigateToReturn = () => {
+    navigate("/return");
+  };
+  const navigateToMain = () => {
+    navigate("/");
+  };
   return (
     <div>
       <Font>
         ‘콩쥐팥쥐’
         <p />: 정상적으로 반납이 완료되었어요!
       </Font>
-      <HomeButton>
+      <HomeButton onClick={navigateToMain}>
         <WhiteFont>홈으로 돌아가기</WhiteFont>
       </HomeButton>
-      <MoreButton>
+      <MoreButton onClick={navigateToReturn}>
         <BlackFont>한 권 더 반납하기</BlackFont>
       </MoreButton>
     </div>
