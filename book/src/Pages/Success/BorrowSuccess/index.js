@@ -40,9 +40,9 @@ const HomeButton = styled.button`
   display: flex;
   position: relative;
   left: 190px;
-  top: 50px;
-  width: 75px;
-  padding: 0px 0px;
+  top: 32px;
+  width: 265px;
+  padding: 8px 24px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -53,10 +53,10 @@ const HomeButton = styled.button`
 const MoreButton = styled.button`
   display: flex;
   position: relative;
-  left: 300px;
-  top: 5px;
-  width: 75px;
-  padding: 8px 0px;
+  left: 470px;
+  bottom: 13px;
+  width: 265px;
+  padding: 8px 24px;
   justify-content: center;
   align-items: center;
   gap: 10px;

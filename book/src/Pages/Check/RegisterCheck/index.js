@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const RegisterCheck = () => {
+  const navigate = useNavigate();
+  const navigateToSuccess = () => {
+    navigate("/registersuccess");
+  };
   return (
     <div>
       <Font>
@@ -9,7 +14,7 @@ const RegisterCheck = () => {
         <p />: 다음의 도서가 등록을 원하는 책이 맞나요?
       </Font>
       <OKButton>
-        <WhiteFont>예</WhiteFont>
+        <WhiteFont onClick={navigateToSuccess}>예</WhiteFont>
       </OKButton>
       <NoButton>
         <BlackFont>아니오</BlackFont>
