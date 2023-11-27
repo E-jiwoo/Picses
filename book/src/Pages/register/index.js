@@ -2,9 +2,14 @@ import React from "react";
 import styled from "styled-components";
 const Register = () => {
   return (
-    <Font>
-      도서 등록 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
-    </Font>
+    <div>
+      <Font>
+        도서 등록 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
+      </Font>
+      <Button>
+        <ButtonFont>다음</ButtonFont>
+      </Button>
+    </div>
   );
 };
 
@@ -17,6 +22,31 @@ const Font = styled.div`
   line-height: 20px;
   margin-left: 190px;
   margin-top: 50px;
+`;
+
+const Button = styled.button`
+  display: flex;
+  position: relative;
+  left: 1150px;
+  top: 430px;
+  width: 75px;
+  padding: 8px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: #5cb0ff;
+  border: none;
+`;
+
+const ButtonFont = styled.div`
+  color: var(--gray-scale-gㅣray-scale-700, #fff);
+  text-align: center;
+  font-family: SUITE;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  padding: 3px;
 `;
 
 export default Register;
