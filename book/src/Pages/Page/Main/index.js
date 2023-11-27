@@ -55,6 +55,7 @@ const AddButton = styled.button`
   margin-left: 190px;
   margin-top: 50px;
   border: none;
+  cursor: pointer;
 `;
 const BorrowButton = styled.button`
   display: flex;
@@ -69,6 +70,7 @@ const BorrowButton = styled.button`
   margin-left: 190px;
   margin-top: 24px;
   border: none;
+  cursor: pointer;
 `;
 const ReturnButton = styled.button`
   display: flex;
@@ -83,6 +85,7 @@ const ReturnButton = styled.button`
   margin-left: 190px;
   margin-top: 24px;
   border: none;
+  cursor: pointer;
 `;
 const Font = styled.div`
   color: #000;

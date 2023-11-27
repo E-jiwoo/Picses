@@ -2,24 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const ReturnCheck = () => {
+const RegisterError = () => {
   const navigate = useNavigate();
-  const navigateToSuccess = () => {
-    navigate("/returnsuccess");
+  const navigateToRegister = () => {
+    navigate("/register");
   };
-  const navigateToError = () => {
-    navigate("/returnerror");
+  const navigateToMain = () => {
+    navigate("/");
   };
   return (
     <div>
       <Font>
-        ‘콩쥐팥쥐’
-        <p />: 다음의 도서가 반납을 원하는 책이 맞나요?
+        뭔가 오류가 생겼나봐요 🥵
+        <p />
+        다시 시도할까요?
       </Font>
       <OKButton>
-        <WhiteFont onClick={navigateToSuccess}>예</WhiteFont>
+        <WhiteFont onClick={navigateToRegister}>예</WhiteFont>
       </OKButton>
-      <NoButton onClick={navigateToError}>
+      <NoButton onClick={navigateToMain}>
         <BlackFont>아니오</BlackFont>
       </NoButton>
     </div>
@@ -74,7 +75,6 @@ const NoButton = styled.button`
   border: 2px solid #5cb0ff;
   cursor: pointer;
 `;
-
 const Font = styled.div`
   color: #000;
   font-family: SUIT;
@@ -86,4 +86,4 @@ const Font = styled.div`
   margin-top: 50px;
 `;
 
-export default ReturnCheck;
+export default RegisterError;

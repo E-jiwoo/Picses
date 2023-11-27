@@ -57,6 +57,7 @@ const HomeButton = styled.button`
   border-radius: 12px;
   background: #5cb0ff;
   border: none;
+  cursor: pointer;
 `;
 const MoreButton = styled.button`
   display: flex;
@@ -71,6 +72,7 @@ const MoreButton = styled.button`
   border-radius: 12px;
   border: 1px solid var(--primary-primary-100, #ffe7ee);
   background: var(--gray-scale-gray-scale-700, #fff);
+  cursor: pointer;
 `;
 const Font = styled.div`
   color: #000;

@@ -10,6 +10,9 @@ import ReturnCheck from "./Pages/Check/ReturnCheck/index";
 import RegisterSuccess from "./Pages/Success/RegisterSuccess/index";
 import BorrowSuccess from "./Pages/Success/BorrowSuccess/index";
 import ReturnSuccess from "./Pages/Success/ReturnSuccess/index";
+import RegisterError from "./Pages/Error/RegisterError/index";
+import BorrowError from "./Pages/Error/BorrowError/index";
+import ReturnError from "./Pages/Error/ReturnError/index";
 import { createGlobalStyle } from "styled-components";
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
           <Route path="/registersuccess" element={<RegisterSuccess />}></Route>
           <Route path="/borrowsuccess" element={<BorrowSuccess />}></Route>
           <Route path="/returnsuccess" element={<ReturnSuccess />}></Route>
+          <Route path="/registererror" element={<RegisterError />}></Route>
+          <Route path="/borrowerror" element={<BorrowError />}></Route>
+          <Route path="/returnerror" element={<ReturnError />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -7,6 +7,9 @@ const BorrowCheck = () => {
   const navigateToSuccess = () => {
     navigate("/borrowsuccess");
   };
+  const navigateToError = () => {
+    navigate("/borrowerror");
+  };
   return (
     <div>
       <Font>
@@ -16,7 +19,7 @@ const BorrowCheck = () => {
       <OKButton onClick={navigateToSuccess}>
         <WhiteFont>예</WhiteFont>
       </OKButton>
-      <NoButton>
+      <NoButton onClick={navigateToError}>
         <BlackFont>아니오</BlackFont>
       </NoButton>
     </div>
@@ -54,6 +57,7 @@ const OKButton = styled.button`
   border-radius: 8px;
   background: #5cb0ff;
   border: none;
+  cursor: pointer;
 `;
 const NoButton = styled.button`
   display: flex;
@@ -68,6 +72,7 @@ const NoButton = styled.button`
   border-radius: 8px;
   background: #fff;
   border: 2px solid #5cb0ff;
+  cursor: pointer;
 `;
 const Font = styled.div`
   color: #000;

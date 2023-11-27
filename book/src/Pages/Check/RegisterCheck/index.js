@@ -7,6 +7,9 @@ const RegisterCheck = () => {
   const navigateToSuccess = () => {
     navigate("/registersuccess");
   };
+  const navigateToError = () => {
+    navigate("/registererror");
+  };
   return (
     <div>
       <Font>
@@ -16,7 +19,7 @@ const RegisterCheck = () => {
       <OKButton>
         <WhiteFont onClick={navigateToSuccess}>예</WhiteFont>
       </OKButton>
-      <NoButton>
+      <NoButton onClick={navigateToError}>
         <BlackFont>아니오</BlackFont>
       </NoButton>
     </div>
@@ -54,6 +57,7 @@ const OKButton = styled.button`
   border-radius: 8px;
   background: #5cb0ff;
   border: none;
+  cursor: pointer;
 `;
 const NoButton = styled.button`
   display: flex;
@@ -68,6 +72,7 @@ const NoButton = styled.button`
   border-radius: 8px;
   background: #fff;
   border: 2px solid #5cb0ff;
+  cursor: pointer;
 `;
 const Font = styled.div`
   color: #000;
