@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const First = () => {
+const Main = () => {
   const navigate = useNavigate();
   const navigateToRegister = () => {
     navigate("/register");
@@ -95,4 +95,4 @@ const Font = styled.div`
   margin-top: 50px;
 `;
 
-export default First;
+export default Main;
