@@ -6,6 +6,12 @@ const First = () => {
   const navigateToRegister = () => {
     navigate("/register");
   };
+  const navigateToBorrow = () => {
+    navigate("/borrow");
+  };
+  const navigateToReturn = () => {
+    navigate("/return");
+  };
   return (
     <div>
       <Font>
@@ -16,11 +22,11 @@ const First = () => {
       <AddButton onClick={navigateToRegister}>
         <ButtonFont>도서 등록하기</ButtonFont>
       </AddButton>
-      <BorrowButton>
+      <BorrowButton onClick={navigateToBorrow}>
         <ButtonFont>도서 대출하기</ButtonFont>
       </BorrowButton>
       <ReturnButton>
-        <ButtonFont>도서 대출하기</ButtonFont>
+        <ButtonFont onClick={navigateToReturn}>도서 반납하기</ButtonFont>
       </ReturnButton>
     </div>
   );
