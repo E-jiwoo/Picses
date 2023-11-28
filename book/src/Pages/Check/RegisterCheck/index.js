@@ -16,8 +16,8 @@ const RegisterCheck = () => {
         ‘콩쥐팥쥐’
         <p />: 다음의 도서가 등록을 원하는 책이 맞나요?
       </Font>
-      <OKButton>
-        <WhiteFont onClick={navigateToSuccess}>예</WhiteFont>
+      <OKButton onClick={navigateToSuccess}>
+        <WhiteFont>예</WhiteFont>
       </OKButton>
       <NoButton onClick={navigateToError}>
         <BlackFont>아니오</BlackFont>
