@@ -27,6 +27,7 @@ const Img = styled.img`
   width: 40px;
   height: 61px;
   float: left;
+  user-select: none;
 `;
 
 const Font = styled.div`
@@ -39,5 +40,6 @@ const Font = styled.div`
   position: relative;
   left: 15px;
   top: 15px;
+  user-select: none;
 `;
 export default Header;

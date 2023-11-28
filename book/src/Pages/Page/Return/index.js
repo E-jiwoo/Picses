@@ -30,6 +30,7 @@ const Font = styled.div`
   line-height: 50px;
   margin-left: 190px;
   margin-top: 50px;
+  user-select: none;
 `;
 
 const Button = styled.button`

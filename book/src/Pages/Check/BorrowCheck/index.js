@@ -34,6 +34,7 @@ const WhiteFont = styled.div`
   font-style: normal;
   font-weight: 600;
   padding: 3px;
+  user-select: none;
 `;
 const BlackFont = styled.div`
   color: var(--gray-scale-gray-scale-200, #262636);
@@ -43,6 +44,7 @@ const BlackFont = styled.div`
   font-style: normal;
   font-weight: 600;
   padding: 3px;
+  user-select: none;
 `;
 const OKButton = styled.button`
   display: flex;
@@ -83,6 +85,7 @@ const Font = styled.div`
   line-height: 50px;
   margin-left: 190px;
   margin-top: 50px;
+  user-select: none;
 `;
 
 export default BorrowCheck;

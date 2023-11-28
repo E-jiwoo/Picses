@@ -85,7 +85,7 @@ const ReturnButton = styled.button`
   margin-left: 190px;
   margin-top: 24px;
   border: none;
-  cursor: pointer;
+  user-select: none;
 `;
 const Font = styled.div`
   color: #000;
@@ -96,6 +96,7 @@ const Font = styled.div`
   line-height: 50px;
   margin-left: 190px;
   margin-top: 50px;
+  user-select: none;
 `;
 
 export default Main;
