@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
 const List = () => {
   const navigate = useNavigate();
 
@@ -13,6 +14,12 @@ const List = () => {
       <Font>
         도서 조회 <p />: 내가 읽었던 책들을 확인해보세요 🥰
       </Font>
+      <BookList>
+        <Number>1</Number>
+        <Name>콩쥐팥쥐</Name>
+        <Time>2023-12-05 18:45:00</Time>
+        <State>대출 중</State>
+      </BookList>
       <Button onClick={navigateToHome}>
         <ButtonFont>처음으로 돌아가기</ButtonFont>
       </Button>
@@ -20,6 +27,63 @@ const List = () => {
   );
 };
 
+const State = styled.div`
+  position: relative;
+  left: 90px;
+  width: 90px;
+  flex-shrink: 0;
+  color: #a6ff4d;
+  text-align: center;
+  font-family: SUIT;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+`;
+
+const Time = styled.div`
+  color: #000;
+  font-family: SUIT;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+`;
+
+const Name = styled.div`
+  width: 587px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: SUIT;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+`;
+
+const Number = styled.div`
+  color: #000;
+  font-family: SUIT;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+`;
+
+const BookList = styled.div`
+  position: fixed;
+  left: 180px;
+  top: 230px;
+  display: flex;
+  width: 1070px;
+  height: 75px;
+  padding: 0px 45px;
+  flex: center;
+  align-items: center;
+  gap: 30px;
+  border-radius: 10px;
+  border: 1px solid #99ceff;
+`;
 const Font = styled.div`
   color: #000;
   font-family: SUIT;
