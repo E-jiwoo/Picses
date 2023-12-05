@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Main = () => {
   const navigate = useNavigate();
-  const navigateToRegister = () => {
-    navigate("/register");
+  const navigateToList = () => {
+    navigate("/list");
   };
   const navigateToBorrow = () => {
     navigate("/borrow");
@@ -19,14 +19,14 @@ const Main = () => {
         <p />
         이용하실 서비스를 선택해주세요.
       </Font>
-      <AddButton onClick={navigateToRegister}>
-        <ButtonFont>도서 등록하기</ButtonFont>
+      <AddButton onClick={navigateToList}>
+        <ButtonFont>도서 조회하기</ButtonFont>
       </AddButton>
       <BorrowButton onClick={navigateToBorrow}>
         <ButtonFont>도서 대출하기</ButtonFont>
       </BorrowButton>
-      <ReturnButton>
-        <ButtonFont onClick={navigateToReturn}>도서 반납하기</ButtonFont>
+      <ReturnButton onClick={navigateToReturn}>
+        <ButtonFont>도서 반납하기</ButtonFont>
       </ReturnButton>
     </div>
   );

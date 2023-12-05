@@ -1,19 +1,20 @@
+import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
-const Register = () => {
+const List = () => {
   const navigate = useNavigate();
 
-  const navigateToCheck = () => {
-    navigate("/registercheck");
+  const navigateToHome = () => {
+    navigate("/");
   };
+
   return (
     <div>
       <Font>
-        도서 등록 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
+        도서 조회 <p />: 내가 읽었던 책들을 확인해보세요 🥰
       </Font>
-      <Button onClick={navigateToCheck}>
-        <ButtonFont>다음</ButtonFont>
+      <Button onClick={navigateToHome}>
+        <ButtonFont>처음으로 돌아가기</ButtonFont>
       </Button>
     </div>
   );
@@ -36,7 +37,7 @@ const Button = styled.button`
   position: relative;
   left: 1150px;
   top: 430px;
-  width: 75px;
+  width: 170px;
   padding: 8px 10px;
   justify-content: center;
   align-items: center;
@@ -57,4 +58,4 @@ const ButtonFont = styled.div`
   padding: 3px;
 `;
 
-export default Register;
+export default List;

@@ -14,7 +14,7 @@ const ReturnSuccess = () => {
     <div>
       <Font>
         ‘콩쥐팥쥐’
-        <p />: 정상적으로 반납이 완료되었어요!
+        <p />: 정상적으로 반납이 완료되었어요! 😇
       </Font>
       <HomeButton onClick={navigateToMain}>
         <WhiteFont>홈으로 돌아가기</WhiteFont>
