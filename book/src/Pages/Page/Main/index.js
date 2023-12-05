@@ -35,10 +35,10 @@ const Main = () => {
 const ButtonFont = styled.div`
   color: var(--gray-scale-gㅣray-scale-700, #fff);
   text-align: center;
-  font-family: SUITE;
+  font-family: SUIT;
   font-size: 17px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   padding: 3px;
 `;
 
