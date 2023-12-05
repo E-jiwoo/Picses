@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const ReturnError = () => {
   const navigate = useNavigate();
-  const navigateToRegister = () => {
-    navigate("/register");
+  const navigateToReturn = () => {
+    navigate("/return");
   };
   const navigateToMain = () => {
     navigate("/");
@@ -17,8 +17,8 @@ const ReturnError = () => {
         <p />
         다시 시도할까요?
       </Font>
-      <OKButton>
-        <WhiteFont onClick={navigateToRegister}>예</WhiteFont>
+      <OKButton onClick={navigateToReturn}>
+        <WhiteFont>예</WhiteFont>
       </OKButton>
       <NoButton onClick={navigateToMain}>
         <BlackFont>아니오</BlackFont>
