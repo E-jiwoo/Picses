@@ -15,7 +15,7 @@ const List = () => {
     const getListData = async () => {
       try {
         const res = await axios.get("http://127.0.0.1:5000/api/read/book");
-        setBookList(res.data);
+        setBookList(res.data.bookLists.booksListInfo);
         console.log(res.data);
       } catch (err) {
         console.log(err);
@@ -30,14 +30,19 @@ const List = () => {
         도서 조회 <p />: 내가 읽었던 책들을 확인해보세요 🥰
       </Font>
 
-      {bookList.map((booksListInfo) => (
-        <BookListItem key={booksListInfo.bookId}>
-          <Number>{booksListInfo.bookId}</Number>
-          <Name>{booksListInfo.bookName}</Name>
-          <Time>{booksListInfo.bookDate}</Time>
-          <State>{booksListInfo.bookState}</State>
-        </BookListItem>
-      ))}
+      {bookList.map(
+        (
+          book,
+          index // bookname을 book으로 수정해주세요.
+        ) => (
+          <BookList key={index}>
+            <Number>{index + 1}</Number>
+            <Name>{book.bookName}</Name>
+            <Time>{book.bookDate}</Time>
+            <State>{book.bookState}</State>
+          </BookList>
+        )
+      )}
       <Button onClick={navigateToHome}>
         <ButtonFont>처음으로 돌아가기</ButtonFont>
       </Button>
@@ -88,7 +93,7 @@ const Number = styled.div`
   line-height: 40px;
 `;
 
-const BookListItem = styled.div`
+const BookList = styled.div`
   position: fixed;
   left: 180px;
   top: 230px;
