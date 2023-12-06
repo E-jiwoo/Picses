@@ -1,24 +1,55 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
 const Borrow = () => {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
   const navigateToCheck = () => {
     navigate("/borrowcheck");
   };
+
+  const getUserCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+      const video = videoRef.current;
+
+      if (video) {
+        video.srcObject = stream;
+        video.play();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  getUserCamera();
+
+  useEffect(() => {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    } else {
+      console.log("getUserMedia가 지원되지 않습니다.");
+    }
+  }, []);
 
   return (
     <div>
       <Font>
         도서 대출 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
       </Font>
+      <Video ref={videoRef}></Video>
       <Button onClick={navigateToCheck}>
         <ButtonFont>다음</ButtonFont>
       </Button>
     </div>
   );
 };
+
+const Video = styled.video`
+  margin-left: 430px;
+  margin-top: 20px;
+`;
 
 const Font = styled.div`
   color: #000;
@@ -28,15 +59,15 @@ const Font = styled.div`
   font-weight: 700;
   line-height: 50px;
   margin-left: 190px;
-  margin-top: 50px;
+  margin-top: 30px;
   user-select: none;
 `;
 
 const Button = styled.button`
   display: flex;
   position: relative;
+  top: 10px;
   left: 1150px;
-  top: 430px;
   width: 75px;
   padding: 8px 10px;
   justify-content: center;

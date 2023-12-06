@@ -4,33 +4,34 @@ import { useNavigate } from "react-router-dom";
 
 const Return = () => {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
   const navigateToCheck = () => {
     navigate("/returncheck");
   };
-  let videoRef = useRef(null);
 
-  const getUserCamera = () => {
-    navigator.mediaDevices
-      .getUserMedia({
-        video: true,
-      })
-      .then((stream) => {
-        //비디오 tag에 stream 추가
-        let video = videoRef.current;
+  const getUserCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
+      const video = videoRef.current;
+
+      if (video) {
         video.srcObject = stream;
-
         video.play();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+  getUserCamera();
 
   useEffect(() => {
-    getUserCamera();
-  }, [videoRef]);
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    } else {
+      console.log("getUserMedia가 지원되지 않습니다.");
+    }
+  }, []);
 
   return (
     <div>
@@ -45,12 +46,11 @@ const Return = () => {
   );
 };
 
-const Video = styled.div`
-  width: 1000px;
-  height: 450px;
-  flex-shrink: 0;
-  margin-left: 200px;
+const Video = styled.video`
+  margin-left: 430px;
+  margin-top: 20px;
 `;
+
 const Font = styled.div`
   color: #000;
   font-family: SUIT;
@@ -59,7 +59,7 @@ const Font = styled.div`
   font-weight: 700;
   line-height: 50px;
   margin-left: 190px;
-  margin-top: 50px;
+  margin-top: 30px;
   user-select: none;
 `;
 
@@ -88,4 +88,5 @@ const ButtonFont = styled.div`
   font-weight: 600;
   padding: 3px;
 `;
+
 export default Return;
