@@ -12,16 +12,19 @@ const List = () => {
 
   const [bookList, setBookList] = useState([]);
   useEffect(() => {
-    const getListData = async () => {
+    const getBookListData = async () => {
       try {
         const res = await axios.get("http://127.0.0.1:5000/api/read/book");
-        setBookList(res.data.bookLists.booksListInfo);
-        console.log(res.data);
+        const sort = res.data.bookLists.booksListInfo.sort(
+          (a, b) => a.id - b.id
+        );
+        setBookList(sort);
+        console.log(sort);
       } catch (err) {
         console.log(err);
       }
     };
-    getListData();
+    getBookListData();
   }, []);
 
   return (
@@ -30,19 +33,16 @@ const List = () => {
         도서 조회 <p />: 내가 읽었던 책들을 확인해보세요 🥰
       </Font>
 
-      {bookList.map(
-        (
-          book,
-          index // bookname을 book으로 수정해주세요.
-        ) => (
-          <BookList key={index}>
-            <Number>{index + 1}</Number>
-            <Name>{book.bookName}</Name>
-            <Time>{book.bookDate}</Time>
-            <State>{book.bookState}</State>
+      {bookList.map((a) => (
+        <Padding>
+          <BookList>
+            <Number>{a.bookId}</Number>
+            <Name>{a.bookName}</Name>
+            <Time>{a.bookDate}</Time>
+            <State>{a.bookState}</State>
           </BookList>
-        )
-      )}
+        </Padding>
+      ))}
       <Button onClick={navigateToHome}>
         <ButtonFont>처음으로 돌아가기</ButtonFont>
       </Button>
@@ -50,15 +50,19 @@ const List = () => {
   );
 };
 
+const Padding = styled.div`
+  padding: 10px;
+`;
+
 const State = styled.div`
   position: relative;
   left: 90px;
-  width: 90px;
+  width: 110px;
   flex-shrink: 0;
   color: #a6ff4d;
   text-align: center;
   font-family: SUIT;
-  font-size: 24px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 500;
   line-height: 40px;
@@ -94,9 +98,9 @@ const Number = styled.div`
 `;
 
 const BookList = styled.div`
-  position: fixed;
+  position: relative;
   left: 180px;
-  top: 230px;
+  top: 30px;
   display: flex;
   width: 1070px;
   height: 75px;
