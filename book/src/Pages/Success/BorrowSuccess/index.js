@@ -10,6 +10,7 @@ const BorrowSuccess = () => {
   const navigateToMain = () => {
     navigate("/");
   };
+
   return (
     <div>
       <Font>

@@ -11,6 +11,7 @@ import ReturnSuccess from "./Pages/Success/ReturnSuccess/index";
 import BorrowError from "./Pages/Error/BorrowError/index";
 import ReturnError from "./Pages/Error/ReturnError/index";
 import { createGlobalStyle } from "styled-components";
+import Loading from "./Pages/Page/Loading/index";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<Main />}></Route>
+          <Route path="/" exact element={<Loading />}></Route>
           <Route path="/borrow" element={<Borrow />}></Route>
           <Route path="/return" element={<Return />}></Route>
           <Route path="/list" element={<List />}></Route>

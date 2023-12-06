@@ -29,9 +29,15 @@ const List = () => {
 
   const handleButtonClick = () => {
     axios
-      .get("http://127.0.0.1:5000/api/read/book")
-      .then((res) => console.log(res.data))
+      .get("https://picses-backend.happycoding.co.kr/api/read/book")
+      .then((res) => {
+        console.log(res.data);
+        // 여기에 추가적인 처리를 원하는 코드 작성 가능
+      })
       .catch(() => console.log("요청 실패"));
+
+    // 홈으로 이동
+    navigateToHome();
   };
 
   return (
@@ -50,7 +56,7 @@ const List = () => {
           </BookList>
         </Padding>
       ))}
-      <Button onClick={navigateToHome}>
+      <Button onClick={handleButtonClick}>
         <ButtonFont>처음으로 돌아가기</ButtonFont>
       </Button>
     </div>
