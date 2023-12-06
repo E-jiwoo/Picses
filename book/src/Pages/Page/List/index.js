@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -15,17 +15,24 @@ const List = () => {
     const getBookListData = async () => {
       try {
         const res = await axios.get("http://127.0.0.1:5000/api/read/book");
-        const sort = res.data.bookLists.booksListInfo.sort(
+        const sortedBooks = res.data.bookLists.booksListInfo.sort(
           (a, b) => a.id - b.id
         );
-        setBookList(sort);
-        console.log(sort);
+        setBookList(sortedBooks);
+        console.log(sortedBooks);
       } catch (err) {
         console.log(err);
       }
     };
     getBookListData();
   }, []);
+
+  const handleButtonClick = () => {
+    axios
+      .get("http://127.0.0.1:5000/api/read/book")
+      .then((res) => console.log(res.data))
+      .catch(() => console.log("요청 실패"));
+  };
 
   return (
     <div>
@@ -34,7 +41,7 @@ const List = () => {
       </Font>
 
       {bookList.map((a) => (
-        <Padding>
+        <Padding key={a.bookId}>
           <BookList>
             <Number>{a.bookId}</Number>
             <Name>{a.bookName}</Name>
@@ -111,6 +118,7 @@ const BookList = styled.div`
   border-radius: 10px;
   border: 1px solid #99ceff;
 `;
+
 const Font = styled.div`
   color: #000;
   font-family: SUIT;
