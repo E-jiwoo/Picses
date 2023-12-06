@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -8,12 +8,36 @@ const Return = () => {
   const navigateToCheck = () => {
     navigate("/returncheck");
   };
+  let videoRef = useRef(null);
+
+  const getUserCamera = () => {
+    navigator.mediaDevices
+      .getUserMedia({
+        video: true,
+      })
+      .then((stream) => {
+        //비디오 tag에 stream 추가
+        let video = videoRef.current;
+
+        video.srcObject = stream;
+
+        video.play();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getUserCamera();
+  }, [videoRef]);
 
   return (
     <div>
       <Font>
         도서 반납 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
       </Font>
+      <Video ref={videoRef}></Video>
       <Button onClick={navigateToCheck}>
         <ButtonFont>다음</ButtonFont>
       </Button>
@@ -21,6 +45,12 @@ const Return = () => {
   );
 };
 
+const Video = styled.div`
+  width: 1000px;
+  height: 450px;
+  flex-shrink: 0;
+  margin-left: 200px;
+`;
 const Font = styled.div`
   color: #000;
   font-family: SUIT;
@@ -36,8 +66,8 @@ const Font = styled.div`
 const Button = styled.button`
   display: flex;
   position: relative;
+  top: 10px;
   left: 1150px;
-  top: 430px;
   width: 75px;
   padding: 8px 10px;
   justify-content: center;

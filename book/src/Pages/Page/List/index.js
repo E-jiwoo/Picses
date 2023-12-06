@@ -1,6 +1,7 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const List = () => {
   const navigate = useNavigate();
@@ -9,17 +10,34 @@ const List = () => {
     navigate("/");
   };
 
+  const [bookList, setbookList] = useState([]);
+  useEffect(() => {
+    const getbookListData = async () => {
+      try {
+        const res = await axios.get("http://127.0.0.1:5000/api/read/book");
+        setbookList(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getbookListData();
+  }, []);
+
   return (
     <div>
       <Font>
         도서 조회 <p />: 내가 읽었던 책들을 확인해보세요 🥰
       </Font>
-      <BookList>
-        <Number>1</Number>
-        <Name>콩쥐팥쥐</Name>
-        <Time>2023-12-05 18:45:00</Time>
-        <State>대출 중</State>
-      </BookList>
+
+      {bookList.map((bookname, index) => (
+        <BookList key={index}>
+          <Number>{index + 1}</Number>
+          <Name>{bookname}</Name>
+          <Time>{bookname.publishedDate}</Time>
+          <State>{bookname.status}</State>
+        </BookList>
+      ))}
       <Button onClick={navigateToHome}>
         <ButtonFont>처음으로 돌아가기</ButtonFont>
       </Button>
