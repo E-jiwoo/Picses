@@ -10,18 +10,18 @@ const List = () => {
     navigate("/");
   };
 
-  const [bookList, setbookList] = useState([]);
+  const [bookList, setBookList] = useState([]);
   useEffect(() => {
-    const getbookListData = async () => {
+    const getListData = async () => {
       try {
         const res = await axios.get("http://127.0.0.1:5000/api/read/book");
-        setbookList(res.data);
+        setBookList(res.data);
         console.log(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    getbookListData();
+    getListData();
   }, []);
 
   return (
@@ -30,13 +30,13 @@ const List = () => {
         도서 조회 <p />: 내가 읽었던 책들을 확인해보세요 🥰
       </Font>
 
-      {bookList.map((bookname, index) => (
-        <BookList key={index}>
-          <Number>{index + 1}</Number>
-          <Name>{bookname}</Name>
-          <Time>{bookname.publishedDate}</Time>
-          <State>{bookname.status}</State>
-        </BookList>
+      {bookList.map((booksListInfo) => (
+        <BookListItem key={booksListInfo.bookId}>
+          <Number>{booksListInfo.bookId}</Number>
+          <Name>{booksListInfo.bookName}</Name>
+          <Time>{booksListInfo.bookDate}</Time>
+          <State>{booksListInfo.bookState}</State>
+        </BookListItem>
       ))}
       <Button onClick={navigateToHome}>
         <ButtonFont>처음으로 돌아가기</ButtonFont>
@@ -88,7 +88,7 @@ const Number = styled.div`
   line-height: 40px;
 `;
 
-const BookList = styled.div`
+const BookListItem = styled.div`
   position: fixed;
   left: 180px;
   top: 230px;
