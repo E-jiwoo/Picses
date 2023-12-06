@@ -127,7 +127,7 @@ const Button = styled.button`
   display: flex;
   position: relative;
   left: 1150px;
-  top: 430px;
+  top: 50px;
   width: 170px;
   padding: 8px 10px;
   justify-content: center;
