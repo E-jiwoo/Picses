@@ -20,7 +20,7 @@ const ReturnCheck = () => {
     setLoading(true);
 
     axios
-      .get("https://picses-backend.happycoding.co.kr/api/rental/book")
+      .post("https://picses-backend.happycoding.co.kr/api/rental/book", {"bookName": "콩쥐팥쥐"})
       .then((res) => {
         console.log(res.data);
         // 여기에 추가적인 처리를 원하는 코드 작성 가능
