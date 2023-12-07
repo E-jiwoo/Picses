@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loading from "../../Page/Loading/index";
 
 const BorrowCheck = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [bookname, setBookname] = useState(null);
+
+  useEffect(() => {
+    // Perform the asynchronous operation to get the bookname here
+    // For example, using an asynchronous function or a callback from camera capture
+    // Replace the following line with the actual method to get the bookname
+    const getBooknameFromCamera = async () => {
+      // Simulating asynchronous call
+      const response = await fetch(
+        "https://picses-backend.happycoding.co.kr/api/rental/bookname"
+      );
+      const data = await response.json();
+      setBookname(data.bookname);
+    };
+
+    getBooknameFromCamera();
+  }, []); // Run this effect only once when the component mounts
 
   const navigateToSuccess = () => {
     navigate("/borrowsuccess");
@@ -18,22 +36,25 @@ const BorrowCheck = () => {
   const handleButtonClick = () => {
     setLoading(true);
 
+    // Use the dynamic bookname in your API call
     axios
-      .get("https://picses-backend.happycoding.co.kr/api/rental/book")
+      .get(
+        `https://picses-backend.happycoding.co.kr/api/rental/book/${bookname}`
+      )
       .then((res) => {
         console.log(res.data);
-        // 여기에 추가적인 처리를 원하는 코드 작성 가능
+        // Additional processing if needed
 
-        // 요청이 성공하면 성공 페이지로 이동
+        // Successful request, navigate to success page
         navigateToSuccess();
       })
       .catch(() => {
-        console.log("요청 실패");
-        // 요청이 실패하면 에러 페이지로 이동
+        console.log("Request failed");
+        // Request failed, navigate to error page
         navigateToError();
       })
       .finally(() => {
-        // API 호출 완료 후 로딩 상태를 false로 설정
+        // Set loading state to false after the API call is complete
         setLoading(false);
       });
   };
@@ -41,12 +62,18 @@ const BorrowCheck = () => {
   return (
     <div>
       {loading ? (
-        <LoadingPage>Loading...</LoadingPage>
+        <Loading />
       ) : (
         <>
           <Font>
-            ‘콩쥐팥쥐’
-            <p />: 다음의 도서가 대출을 원하는 책이 맞나요?
+            {bookname ? (
+              <>
+                {bookname}
+                <p />: 다음의 도서가 대출을 원하는 책이 맞나요?
+              </>
+            ) : (
+              "Loading bookname..."
+            )}
           </Font>
           <OKButton onClick={handleButtonClick}>
             <WhiteFont>예</WhiteFont>
@@ -59,15 +86,6 @@ const BorrowCheck = () => {
     </div>
   );
 };
-
-const LoadingPage = styled.div`
-  color: #000;
-  font-family: SUIT;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-  margin-top: 50px;
-`;
 
 const WhiteFont = styled.div`
   color: var(--gray-scale-gㅣray-scale-700, #fff);
