@@ -14,7 +14,9 @@ const List = () => {
   useEffect(() => {
     const getBookListData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/read/book");
+        const res = await axios.get(
+          "https://picses-backend.happycoding.co.kr/api/read/book"
+        );
         const sortedBooks = res.data.bookLists.booksListInfo.sort(
           (a, b) => a.id - b.id
         );
