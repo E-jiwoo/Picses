@@ -22,30 +22,32 @@ const Borrow = () => {
 
       const jsonData = await response.json();
       console.log("GET 요청 성공", jsonData);
-      navigate("/borrowcheck");
+      navigate("/borrowcheck", { state: { bookname: jsonData.msg } });
     } catch (error) {
       console.error("GET 요청 중 오류 발생:", error);
     }
   };
 
-  const getUserCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-
-      const video = videoRef.current;
-
-      if (video) {
-        video.srcObject = stream;
-        video.play();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  getUserCamera();
-
   useEffect(() => {
+    const getUserCamera = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+
+        const video = videoRef.current;
+
+        if (video) {
+          video.srcObject = stream;
+          video.play();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      getUserCamera();
     } else {
       console.log("getUserMedia가 지원되지 않습니다.");
     }
