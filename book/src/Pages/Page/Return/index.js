@@ -6,28 +6,48 @@ const Return = () => {
   const navigate = useNavigate();
   const videoRef = useRef(null);
 
-  const navigateToCheck = () => {
-    navigate("/returncheck");
-  };
-
-  const getUserCamera = async () => {
+  const navigateToCheck = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const apiUrl = "https://picses-backend.happycoding.co.kr/api/read/camera";
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-      const video = videoRef.current;
-
-      if (video) {
-        video.srcObject = stream;
-        video.play();
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
+
+      const jsonData = await response.json();
+      console.log("GET 요청 성공", jsonData);
+      navigate("/borrowcheck", { state: { bookname: jsonData.msg } });
     } catch (error) {
-      console.log(error);
+      console.error("GET 요청 중 오류 발생:", error);
     }
   };
-  getUserCamera();
 
   useEffect(() => {
+    const getUserCamera = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+
+        const video = videoRef.current;
+
+        if (video) {
+          video.srcObject = stream;
+          video.play();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      getUserCamera();
     } else {
       console.log("getUserMedia가 지원되지 않습니다.");
     }
