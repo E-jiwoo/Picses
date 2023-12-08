@@ -22,7 +22,7 @@ const Return = () => {
 
       const jsonData = await response.json();
       console.log("GET 요청 성공", jsonData);
-      navigate("/borrowcheck", { state: { bookname: jsonData.msg } });
+      navigate("/returncheck", { state: { bookname: jsonData.msg } });
     } catch (error) {
       console.error("GET 요청 중 오류 발생:", error);
     }

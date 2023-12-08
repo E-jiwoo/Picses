@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ReturnSuccess = () => {
   const navigate = useNavigate();
@@ -10,17 +10,34 @@ const ReturnSuccess = () => {
   const navigateToMain = () => {
     navigate("/");
   };
+  const location = useLocation(); // useLocation 훅을 사용하여 location 객체를 가져옵니다.
+  const [bookname, setBookname] = useState(null);
+
+  useEffect(() => {
+    // useLocation 훅을 사용하여 location 객체에서 state에 접근합니다.
+    const { state } = location;
+    if (state && state.bookname) {
+      setBookname(state.bookname);
+    }
+  }, [location]);
+
   return (
     <div>
       <Font>
-        ‘콩쥐팥쥐’
-        <p />: 정상적으로 반납이 완료되었어요! 😇
+        {bookname ? (
+          <>
+            {bookname}
+            <p />: 정상적으로 반납이 완료되었어요! 😇
+          </>
+        ) : (
+          "Loading bookname..."
+        )}
       </Font>
       <HomeButton onClick={navigateToMain}>
         <WhiteFont>홈으로 돌아가기</WhiteFont>
       </HomeButton>
       <MoreButton onClick={navigateToReturn}>
-        <BlackFont>한 권 더 반납하기</BlackFont>
+        <BlackFont>한 권 더 대출하기</BlackFont>
       </MoreButton>
     </div>
   );

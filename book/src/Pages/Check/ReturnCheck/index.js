@@ -19,11 +19,13 @@ const ReturnCheck = () => {
   }, [location]); // useLocation을 의존성 배열에 추가
 
   const navigateToSuccess = () => {
-    navigate("/borrowsuccess");
+    navigate("/returnsuccess", {
+      state: { bookname: location.state.bookname },
+    });
   };
 
   const navigateToError = () => {
-    navigate("/borrowerror");
+    navigate("/returnerror");
   };
 
   const handleButtonClick = () => {
@@ -31,7 +33,7 @@ const ReturnCheck = () => {
 
     axios
       .post("https://picses-backend.happycoding.co.kr/api/rental/book", {
-        bookname,
+        bookName: bookname, // 여기에서 bookName으로 수정
       })
       .then((res) => {
         console.log(res.data);
