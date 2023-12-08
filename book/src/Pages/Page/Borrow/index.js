@@ -6,8 +6,26 @@ const Borrow = () => {
   const navigate = useNavigate();
   const videoRef = useRef(null);
 
-  const navigateToCheck = () => {
-    navigate("/borrowcheck");
+  const navigateToCheck = async () => {
+    try {
+      const apiUrl = "https://picses-backend.happycoding.co.kr/api/read/camera";
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const jsonData = await response.json();
+      console.log("GET 요청 성공", jsonData);
+      navigate("/borrowcheck");
+    } catch (error) {
+      console.error("GET 요청 중 오류 발생:", error);
+    }
   };
 
   const getUserCamera = async () => {
