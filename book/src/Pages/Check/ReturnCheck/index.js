@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
-import Loading from "../../Page/Loading/index";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import Loading from '../../Page/Loading/index';
 
 const ReturnCheck = () => {
   const navigate = useNavigate();
@@ -19,20 +19,20 @@ const ReturnCheck = () => {
   }, [location]); // useLocation을 의존성 배열에 추가
 
   const navigateToSuccess = () => {
-    navigate("/returnsuccess", {
+    navigate('/returnsuccess', {
       state: { bookname: location.state.bookname },
     });
   };
 
   const navigateToError = () => {
-    navigate("/returnerror");
+    navigate('/returnerror');
   };
 
   const handleButtonClick = () => {
     setLoading(true);
 
     axios
-      .post("https://picses-backend.happycoding.co.kr/api/rental/book", {
+      .post('https://picses-backend.happycoding.co.kr/api/rental/book', {
         bookName: bookname, // 여기에서 bookName으로 수정
       })
       .then((res) => {
@@ -40,7 +40,7 @@ const ReturnCheck = () => {
         navigateToSuccess();
       })
       .catch(() => {
-        console.log("요청 실패");
+        console.log('요청 실패');
         navigateToError();
       })
       .finally(() => {
@@ -61,7 +61,7 @@ const ReturnCheck = () => {
                 <p />: 다음의 도서가 반납을 원하는 책이 맞나요?
               </>
             ) : (
-              "Loading bookname..."
+              'Loading bookname...'
             )}
           </Font>
           <OKButton onClick={handleButtonClick}>

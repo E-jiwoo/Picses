@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const List = () => {
   const navigate = useNavigate();
 
   const navigateToHome = () => {
-    navigate("/");
+    navigate('/');
   };
 
   const [bookList, setBookList] = useState([]);
@@ -15,7 +15,7 @@ const List = () => {
     const getBookListData = async () => {
       try {
         const res = await axios.get(
-          "https://picses-backend.happycoding.co.kr/api/read/book"
+          'https://picses-backend.happycoding.co.kr/api/read/book'
         );
         const sortedBooks = res.data.bookLists.booksListInfo.sort(
           (a, b) => a.id - b.id
@@ -31,12 +31,12 @@ const List = () => {
 
   const handleButtonClick = () => {
     axios
-      .get("https://picses-backend.happycoding.co.kr/api/read/book")
+      .get('https://picses-backend.happycoding.co.kr/api/read/book')
       .then((res) => {
         console.log(res.data);
         // 여기에 추가적인 처리를 원하는 코드 작성 가능
       })
-      .catch(() => console.log("요청 실패"));
+      .catch(() => console.log('요청 실패'));
 
     // 홈으로 이동
     navigateToHome();

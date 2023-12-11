@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+// import Webcam from 'react-webcam';
 
 const Borrow = () => {
   const navigate = useNavigate();
@@ -8,11 +9,11 @@ const Borrow = () => {
 
   const navigateToCheck = async () => {
     try {
-      const apiUrl = "https://picses-backend.happycoding.co.kr/api/read/camera";
+      const apiUrl = 'https://picses-backend.happycoding.co.kr/api/read/camera';
       const response = await fetch(apiUrl, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
@@ -21,10 +22,10 @@ const Borrow = () => {
       }
 
       const jsonData = await response.json();
-      console.log("GET 요청 성공", jsonData);
-      navigate("/borrowcheck", { state: { bookname: jsonData.msg } });
+      console.log('GET 요청 성공', jsonData);
+      navigate('/borrowcheck', { state: { bookname: jsonData.msg } });
     } catch (error) {
-      console.error("GET 요청 중 오류 발생:", error);
+      console.error('GET 요청 중 오류 발생:', error);
     }
   };
 
@@ -49,7 +50,7 @@ const Borrow = () => {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       getUserCamera();
     } else {
-      console.log("getUserMedia가 지원되지 않습니다.");
+      console.log('getUserMedia가 지원되지 않습니다.');
     }
   }, []);
 
@@ -58,7 +59,17 @@ const Borrow = () => {
       <Font>
         도서 대출 <p />: 준비한 도서를 라즈베리 파이의 카메라에 비추어 주세요.
       </Font>
-      <Video ref={videoRef}></Video>
+      {/* <Webcam /> */}
+      {/* <Video ref={videoRef}></Video> */}
+      <div>
+        <iframe
+          style={{ 'margin-left': '430px', 'margin-top': '20px' }}
+          title="WebCam"
+          width={700}
+          height={400}
+          src="https://picses-backend.happycoding.co.kr/api/stream"
+        />
+      </div>
       <Button onClick={navigateToCheck}>
         <ButtonFont>다음</ButtonFont>
       </Button>
@@ -66,7 +77,7 @@ const Borrow = () => {
   );
 };
 
-const Video = styled.video`
+const Iframe = `
   margin-left: 430px;
   margin-top: 20px;
 `;

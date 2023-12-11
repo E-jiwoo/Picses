@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Return = () => {
   const navigate = useNavigate();
@@ -8,11 +8,11 @@ const Return = () => {
 
   const navigateToCheck = async () => {
     try {
-      const apiUrl = "https://picses-backend.happycoding.co.kr/api/read/camera";
+      const apiUrl = 'https://picses-backend.happycoding.co.kr/api/read/camera';
       const response = await fetch(apiUrl, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
@@ -21,10 +21,10 @@ const Return = () => {
       }
 
       const jsonData = await response.json();
-      console.log("GET 요청 성공", jsonData);
-      navigate("/returncheck", { state: { bookname: jsonData.msg } });
+      console.log('GET 요청 성공', jsonData);
+      navigate('/returncheck', { state: { bookname: jsonData.msg } });
     } catch (error) {
-      console.error("GET 요청 중 오류 발생:", error);
+      console.error('GET 요청 중 오류 발생:', error);
     }
   };
 
@@ -49,7 +49,7 @@ const Return = () => {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       getUserCamera();
     } else {
-      console.log("getUserMedia가 지원되지 않습니다.");
+      console.log('getUserMedia가 지원되지 않습니다.');
     }
   }, []);
 
